@@ -1,16 +1,22 @@
 ﻿using ConsoleApp.Models;
+using Newtonsoft.Json;
 
 namespace ConsoleApp.Services;
 
 internal class MenuService
 {
-    public static void Run ()
-    {
-        mainMenu();
+    private List<Contact> contacts = new List<Contact>();
+    private FileService fileService = new();
 
+    public string FilePath { get; set; } = null!;
+    public void Run ()
+    {
+        PopulateContactsList();
+        mainMenu();
     }
 
-    private static void mainMenu () {
+    private void mainMenu () {
+        clearScreen();
         Console.WriteLine("Välkommen till Adressboken");
         Console.WriteLine("1. Skapa en kontakt");
         Console.WriteLine("2. Visa alla kontakter");
@@ -22,55 +28,83 @@ internal class MenuService
         switch(options)
         {
             case "1": addContactPage(); break;
-            case "2": showContactsPage(); break;
-            case "3": showContactPage(); break;
-            case "4": removeContactPage(); break;
+            case "2": ShowContactsPage(); break;
+            case "3": ShowContactPage(); break;
+            case "4": RemoveContactPage(); break;
             default:
+                clearScreen();
                 Console.WriteLine("Ogiltigt val!");
                 break;
         }
     }
 
-    private static void addContactPage()
+    private void addContactPage()
     {
-        IContact contact = new Contact();
+        Contact contact = new Contact();
 
         clearScreen();
         Console.WriteLine("Skapa en ny kontakt");
         Console.Write("Förnamn: ");
-        contact.FirstName = Console.ReadLine();
+        contact.FirstName = Console.ReadLine() ?? null!;
         Console.Write("Efternamn: ");
-        contact.LastName = Console.ReadLine();
+        contact.LastName = Console.ReadLine() ?? null!;
         Console.Write("E-postadress: ");
-        contact.Email = Console.ReadLine();
+        contact.Email = Console.ReadLine() ?? null!;
         Console.Write("Telefonnummer: ");
-        contact.PhoneNumber = Console.ReadLine();
+        contact.PhoneNumber = Console.ReadLine() ?? null!;
         Console.Write("PostNummer:  ");
-        contact.PostalCode = Console.ReadLine();
+        contact.PostalCode = Console.ReadLine() ?? null!;
         Console.Write("Stad: ");
-        contact.City = Console.ReadLine();
+        contact.City = Console.ReadLine() ?? null!;
         Console.Write("Adress: ");
-        contact.StreetName = Console.ReadLine();
+        contact.StreetName = Console.ReadLine() ?? null!;
 
-
+        contacts.Add(contact);
+        fileService.storeContent(JsonConvert.SerializeObject(contacts), FilePath);
+        clearScreen();
     }
 
-    private static void showContactsPage()
+    private void ShowContactsPage()
+    {
+
+        clearScreen();
+        foreach(Contact contact in contacts)
+        {
+            Console.WriteLine(contact.FirstName);
+            Console.WriteLine(contact.LastName);
+            Console.WriteLine(contact.Email);
+            Console.WriteLine(contact.PhoneNumber);
+            Console.WriteLine(contact.StreetName);
+            Console.WriteLine(contact.PostalCode);
+            Console.WriteLine(contact.City);
+            Console.WriteLine();
+            
+        }
+        Console.WriteLine("Press any key to return to main menu...");
+        Console.ReadKey();
+        
+    }
+
+    private void ShowContactPage()
     {
         throw new NotImplementedException();
     }
 
-    private static void showContactPage()
+    private void RemoveContactPage()
     {
         throw new NotImplementedException();
     }
 
-    private static void removeContactPage()
+    private void PopulateContactsList ()
     {
-        throw new NotImplementedException();
+
+        var itemsFromFile= JsonConvert.DeserializeObject<List<Contact>>(fileService.readContent(FilePath));
+        if (itemsFromFile != null) {
+            contacts = itemsFromFile;
+        }
     }
 
-    private static void clearScreen()
+    private void clearScreen()
     {
         Console.Clear();
     }
