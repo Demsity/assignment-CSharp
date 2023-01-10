@@ -7,6 +7,8 @@ internal interface IAdress
     string PostalCode { get; set; }
     string City { get; set; }
 
+    string FullAdress => $"{StreetName}, {PostalCode} {City}";
+
 }
 
 internal abstract class Adress : IAdress

@@ -2,7 +2,7 @@
 namespace ConsoleApp.Models;
 
 
-internal interface IContact
+internal interface IContact : IAdress
 {
     Guid Id { get; }    
     string FirstName { get; set; }

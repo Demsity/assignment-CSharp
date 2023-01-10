@@ -1,3 +1,6 @@
 ﻿using ConsoleApp.Services;
 
-MenuService.Run();
+while(true)
+{
+    MenuService.Run();
+}
