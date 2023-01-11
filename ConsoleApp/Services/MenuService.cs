@@ -16,7 +16,7 @@ internal class MenuService
     }
 
     private void mainMenu () {
-        clearScreen();
+        ClearScreen();
         Console.WriteLine("Välkommen till Adressboken");
         Console.WriteLine("1. Skapa en kontakt");
         Console.WriteLine("2. Visa alla kontakter");
@@ -32,8 +32,9 @@ internal class MenuService
             case "3": ShowContactPage(); break;
             case "4": RemoveContactPage(); break;
             default:
-                clearScreen();
+                ClearScreen();
                 Console.WriteLine("Ogiltigt val!");
+                ReturnToMainMenu();
                 break;
         }
     }
@@ -42,8 +43,8 @@ internal class MenuService
     {
         Contact contact = new Contact();
 
-        clearScreen();
-        Console.WriteLine("Skapa en ny kontakt");
+        ClearScreen();
+        Console.WriteLine("1. Skapa en ny kontakt:");
         Console.Write("Förnamn: ");
         contact.FirstName = Console.ReadLine() ?? null!;
         Console.Write("Efternamn: ");
@@ -61,39 +62,98 @@ internal class MenuService
 
         contacts.Add(contact);
         fileService.storeContent(JsonConvert.SerializeObject(contacts), FilePath);
-        clearScreen();
+        Console.WriteLine("Kontakten är Skapad!");
+        ReturnToMainMenu();
+        
     }
 
     private void ShowContactsPage()
     {
 
-        clearScreen();
-        foreach(Contact contact in contacts)
+        ClearScreen();
+        Console.WriteLine("2. Visa alla kontakter:");
+        InsertLineBreak();
+        foreach (Contact contact in contacts)
         {
-            Console.WriteLine(contact.FirstName);
-            Console.WriteLine(contact.LastName);
-            Console.WriteLine(contact.Email);
-            Console.WriteLine(contact.PhoneNumber);
-            Console.WriteLine(contact.StreetName);
-            Console.WriteLine(contact.PostalCode);
-            Console.WriteLine(contact.City);
-            Console.WriteLine();
+            Console.WriteLine($"Förnamn: {contact.FirstName}");
+            Console.WriteLine($"Efternamn: {contact.LastName}");
+            Console.WriteLine($"E-postadrtess: {contact.Email}");
+            Console.WriteLine($"Telefonummer: {contact.PhoneNumber}");
+            Console.WriteLine($"Adress: {contact.FullAdress}");
+            InsertLineBreak();
             
         }
-        Console.WriteLine("Press any key to return to main menu...");
-        Console.ReadKey();
-        
+        ReturnToMainMenu();
     }
 
     private void ShowContactPage()
     {
-        throw new NotImplementedException();
+        ClearScreen();
+        Console.WriteLine("3. Visa en specifik kontakt:");
+        Console.Write("Sök efter en kontakt med namn (Skiftkänslig): ");
+        var query = Console.ReadLine();
+        InsertLineBreak();
+
+        var contact = SearchForContact(query);
+        if (contact != null)
+        {
+            Console.WriteLine($"Förnamn: {contact.FirstName}");
+            Console.WriteLine($"Efternamn: {contact.LastName}");
+            Console.WriteLine($"E-postadrtess: {contact.Email}");
+            Console.WriteLine($"Telefonummer: {contact.PhoneNumber}");
+            Console.WriteLine($"Adress: {contact.FullAdress}");
+            ReturnToMainMenu();
+        }
+
+
     }
 
     private void RemoveContactPage()
     {
-        throw new NotImplementedException();
+        ClearScreen();
+        Console.WriteLine("4. Ta bort en specifik kontakt");
+        Console.Write("Sök efter en kontakt med namn (Skiftkänslig): ");
+        var query = Console.ReadLine();
+        InsertLineBreak();
+
+        var contact = SearchForContact(query);
+        if (contact != null)
+        {
+            Console.WriteLine($"Förnamn: {contact.FirstName}");
+            Console.WriteLine($"Efternamn: {contact.LastName}");
+            Console.WriteLine($"E-postadrtess: {contact.Email}");
+            Console.WriteLine($"Telefonummer: {contact.PhoneNumber}");
+            Console.WriteLine($"Adress: {contact.FullAdress}");
+            InsertLineBreak();
+            Console.Write("Vill du ta bort kontakten? ( y/n ): ");
+            var answer = Console.ReadLine();
+            
+            switch(answer.ToLower()) {
+                case "y":
+                    InsertLineBreak();
+                    contacts.Remove(contact);
+                    fileService.storeContent(JsonConvert.SerializeObject(contacts), FilePath);
+                    Console.WriteLine("Kontakten har tagits bort!");
+                    ReturnToMainMenu();
+                    break;
+                case "n":
+                    InsertLineBreak();
+                    Console.WriteLine("Kontakten har inte tagits bort");
+                    ReturnToMainMenu();
+                    break;
+                default:
+                    InsertLineBreak();
+                    Console.WriteLine("Kontakten har inte tagits bort");
+                    ReturnToMainMenu();
+                    break;
+
+            }
+        }
+
     }
+
+
+
 
     private void PopulateContactsList ()
     {
@@ -104,8 +164,46 @@ internal class MenuService
         }
     }
 
-    private void clearScreen()
+    private void ClearScreen()
     {
         Console.Clear();
+    }
+
+    private void ReturnToMainMenu ()
+    {
+        Console.WriteLine();
+        Console.WriteLine("Tryck på valfri knapp för att återvända till menyn...");
+        Console.ReadKey();
+    }
+
+    private void InsertLineBreak ()
+    {
+        Console.WriteLine();
+    }
+
+    private Contact SearchForContact (string query) 
+    {
+        Contact contact = new Contact();
+        if (query != null)
+        {
+            contact = contacts.Find(x => x.FirstName == query || x.LastName == query)!;
+
+            if (contact != null)
+            {
+                return contact;
+
+            }
+            else
+            {
+                ClearScreen();
+                Console.WriteLine("Kontakten hittades inte");
+                ReturnToMainMenu();
+                return null!;
+
+            }
+        } else
+        {
+            return null!;
+        }
     }
 }

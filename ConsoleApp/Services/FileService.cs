@@ -28,8 +28,8 @@ internal class FileService
         }
         catch
         {
-            return null!;
             throw new Exception("Failed to load data from json file");
+
         }
 
     }
