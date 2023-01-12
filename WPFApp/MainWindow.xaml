@@ -5,8 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-
+        Title="AdressBoken" Height="450" Width="800">
+    <!-- Main Wrapper -->
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="1" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="10*" />
+        </Grid.RowDefinitions>
+        <!-- Top Bar -->
+        <Grid Grid.Row="0" Background="#DDAE7E" Grid.ColumnSpan="3" Margin="0 0 0 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Grid.Column="0" 
+                       Grid.ColumnSpan="2"
+                       Margin="20 0 0 0"
+                       Text="AdressBoken"
+                       FontSize="24"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="15 0 10 0" 
+                           Text="Lägg till kontakt" />
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="10 0 10 0" 
+                           Text="Ändra kontakt" />
+                <TextBlock HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Margin="10 0 0 0" 
+                    Text="Ta bort kontakt" />
+            </StackPanel>
+        </Grid>
+        <!-- Left window -->
+        <Grid Grid.Row="1" Grid.Column="0" 
+              Margin="10 10 15 10">
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Detta är en text" />
+        </Grid>
+        <!-- Middle devider -->
+        <Grid Grid.Row="1" Grid.Column="1" Background="#9A8F97" />
+        <!-- Right window -->
+        <Grid Grid.Row="1" Grid.Column="2" 
+              Margin="15 10 10 10">
+            <TextBlock Grid.Column="0" Grid.Row="1" Text="Detta är en text" />
+        </Grid>
     </Grid>
 </Window>
