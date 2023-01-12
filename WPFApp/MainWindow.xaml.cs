@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,17 +14,37 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WPFApp.Models;
+using WPFApp.Services;
 
 namespace WPFApp
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
-    /// </summary>
+    /// </summary
     public partial class MainWindow : Window
     {
+        private ObservableCollection<Contact> contacts = new ObservableCollection<Contact>();
+        private readonly FileService file = new FileService();
+        private readonly string filePath = @$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\content.json";
+
         public MainWindow()
         {
             InitializeComponent();
+            PopulateContactsCollection();
+        }
+
+        private void PopulateContactsCollection()
+        {
+            var items = JsonConvert.DeserializeObject<ObservableCollection<Contact>>(file.readContent(filePath));
+
+            if (items != null)
+            {
+                contacts = items;
+            }
+
+            lv_contacts.ItemsSource = contacts; 
         }
     }
+
 }
