@@ -4,9 +4,79 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Wpf_MVVM_App"
+        xmlns:viewmodels="clr-namespace:Wpf_MVVM_App.MVVM.ViewModels"
+        xmlns:views="clr-namespace:Wpf_MVVM_App.MVVM.Views" 
+        d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Adressboken" 
+        Height="400" 
+        Width="400"
+        WindowStyle="None"
+        ResizeMode="CanResizeWithGrip"
+        Background="Transparent"
+        AllowsTransparency="True"
+        Foreground="#E0E1DD">
 
-    </Grid>
+    <Border Background="#1B263B" 
+            CornerRadius="20"
+            >
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Window Style, Top Bar -->
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition  Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <!-- App Title -->
+                <TextBlock Text="AdressBoken"
+                           FontSize="20"
+                           Margin="15 5 0 5"
+                           Grid.Column="0" />
+                <!-- App Controlls -->
+                <StackPanel Grid.Column="2"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <TextBlock Text="_"
+                               Margin="10 0 10 0"/>
+                    <TextBlock Text="|_|"
+                               Margin="10 0 10 0"/>
+                    <TextBlock Text="X"
+                               Margin="10 0 10 0"/>
+                </StackPanel>
+            </Grid>
+            <Border Grid.Row="1"
+                    BorderBrush="#415A77"
+                    BorderThickness="2"/>
+            <!-- Main Area -->
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- Nav Meny -->
+                <StackPanel Grid.Column="0" Margin="10" >
+                    <TextBlock Text="Add New Contact" />
+                    <TextBlock Text="Add Contact" />
+                </StackPanel>
+                <!-- Divider -->
+                <Border Grid.Column="1"
+                        BorderBrush="#415A77"
+                        BorderThickness="1"
+                        Margin="10 10 10 0"/>
+
+                <ContentControl Grid.Column="2"
+                                Content="{Binding CurrentViewModel}">
+                </ContentControl>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>

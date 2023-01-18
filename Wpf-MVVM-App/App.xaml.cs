@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Wpf_MVVM_App.MVVM.ViewModels;
 
 namespace Wpf_MVVM_App
 {
@@ -13,5 +14,15 @@ namespace Wpf_MVVM_App
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            MainWindow = new MainWindow()
+            {
+                DataContext = new MainViewModel()
+            };
+
+            MainWindow.Show();
+            base.OnStartup(e);
+        }
     }
 }
