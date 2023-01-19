@@ -19,7 +19,7 @@ namespace Wpf_MVVM_App.MVVM.Models
 
 
     }
-    internal class Contact : IContact, IAdress
+    public class Contact : IContact, IAdress
     {
         public Guid Id { get; set; } = Guid.NewGuid();
         public string FirstName { get; set; } = null!;
@@ -29,6 +29,8 @@ namespace Wpf_MVVM_App.MVVM.Models
         public string StreetName { get; set; } = null!;
         public string PostalCode { get; set; } = null!;
         public string City { get; set; } = null!;
+
+        public string FullName => $"{FirstName} {LastName}";
 
         public string FullAdress => $"{StreetName}, {PostalCode} {City}";
     }
