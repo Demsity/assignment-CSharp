@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Wpf_MVVM_App.MVVM.Views.BookView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:view="clr-namespace:Wpf_MVVM_App.MVVM.Views"
+             xmlns:viewmodels="clr-namespace:Wpf_MVVM_App.MVVM.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewmodels:BookViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <ListView ItemsSource="{Binding ContactsList}"
+                  SelectedItem="{Binding SelectedContact}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="IMG" Margin="0 0 5 0" />
+                        <TextBlock Text="{Binding FullName}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Grid.Column="2"
+              DataContext="{Binding SelectedContact}">
+            <TextBlock Text="{Binding FirstName}" />
+            <TextBlock Text="{Binding LastName}" />
+
+        </Grid>
+    </Grid>
+</UserControl>

@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Wpf_MVVM_App.MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for ContactView.xaml
+    /// Interaction logic for BookView.xaml
     /// </summary>
-    public partial class ContactView : UserControl
+    public partial class BookView : UserControl
     {
-        public ContactView()
+        public BookView()
         {
             InitializeComponent();
         }

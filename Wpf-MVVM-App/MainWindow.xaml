@@ -10,61 +10,58 @@
         mc:Ignorable="d"
         Title="Adressboken" 
         Height="400" 
-        Width="400"
-        WindowStyle="None"
+        Width="600"
         ResizeMode="CanResizeWithGrip"
-        Background="Transparent"
-        AllowsTransparency="True"
         Foreground="#E0E1DD">
 
-    <Border Background="#1B263B" 
-            CornerRadius="10"
-            >
-        <Grid Margin="10">
+    <Grid Background="#1B263B">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <!-- Toolbar -->
+        <Grid Background="#0D1B2A">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
+                <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
-
-            <!-- Window Style, Top Bar -->
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition  Width="auto"/>
-                </Grid.ColumnDefinitions>
-                <!-- App Title -->
-                <TextBlock Text="AdressBoken"
-                           FontSize="20"
-                           Margin="15 5 0 5"
-                           Grid.Column="0" />
-                <!-- App Controlls -->
-                <StackPanel Grid.Column="2"
-                            Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center">
-                    <TextBlock Text="_"
-                               Margin="10 0 10 0"/>
-                    <TextBlock Text="|_|"
-                               Margin="10 0 10 0"/>
-                    <TextBlock Text="X"
-                               Margin="10 0 10 0"/>
-                </StackPanel>
-            </Grid>
-            <Border Grid.Row="1"
-                    BorderBrush="#415A77"
-                    BorderThickness="2"/>
-            <!-- Main Area -->
-            <Grid Grid.Row="2">
-                <ContentControl Content="{Binding CurrentViewModel}">
-                    <ContentControl.Resources>
-                        <DataTemplate DataType="{x:Type viewmodels:ContactsViewModel}">
-                            <views:ContactView />
-                        </DataTemplate>
-                    </ContentControl.Resources>
-                </ContentControl>
-            </Grid>
+            <TextBlock Text="AdressBoken"
+                       Grid.Column="0"
+                       FontSize="20"
+                       VerticalAlignment="Center"
+                       Margin="10 0 0 0"/>
+            <!-- Toolbar Controlls -->
+            <StackPanel Grid.Row="0"
+                        Grid.Column="3"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top">
+                <TextBlock Margin="5 0 5 0"  Text="_" />
+                <TextBlock Margin="5 0 5 0" Text="|_|" />
+                <TextBlock Margin="5 0 5 0" Text="X" />
+            </StackPanel>
+            <StackPanel Grid.Row="2"
+                        Grid.Column="3"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center">
+                <TextBlock Text="New" Margin="5 0 5 0" />
+                <TextBlock Text="Edit" Margin="5 0 5 0" />
+            </StackPanel>
         </Grid>
-    </Border>
+        <ContentControl Grid.Row="1"
+                        Content="{Binding CurrentViewModel}">
+            <ContentControl.Resources>
+                <DataTemplate DataType="{x:Type viewmodels:BookViewModel}">
+                    <views:BookView />
+                </DataTemplate>
+            </ContentControl.Resources>
+        </ContentControl>
+    </Grid>
 </Window>

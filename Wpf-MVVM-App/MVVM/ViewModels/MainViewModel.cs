@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,12 +13,13 @@ namespace Wpf_MVVM_App.MVVM.ViewModels
         [ObservableProperty]
         private ObservableObject currentViewModel;
 
+
         /// <summary>
         /// MVVM Main Contstructor
         /// </summary>
         public MainViewModel()
         {
-            CurrentViewModel = new ContactsViewModel();
+            CurrentViewModel = new BookViewModel();
         }
     }
 }
