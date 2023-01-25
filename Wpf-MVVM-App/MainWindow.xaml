@@ -47,6 +47,26 @@
                 <TextBlock Margin="5 0 5 0" Text="X" />
             </StackPanel>
             <StackPanel Grid.Row="1"
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="left"
+                        Margin="10 0 0 0">
+                <Button Cursor="Hand"
+                            Background="{StaticResource ThemeDark}"
+                            BorderThickness="0"
+                            Padding="5"
+                            Command="{Binding showBookViewCommand}"
+                            Width="30"
+                            Height="30">
+                    <Button.Content>
+                        <Image Source="/Assets/Icons/house-user-solid.png" 
+                               Stretch="UniformToFill"
+                               HorizontalAlignment="Left" 
+                               Cursor="Hand"/>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
                         Grid.Column="3"
                         Orientation="Horizontal"
                         HorizontalAlignment="right"
@@ -55,9 +75,28 @@
                 <Button Cursor="Hand"
                             Background="{StaticResource ThemeDark}"
                             BorderThickness="0"
-                            Padding="5">
+                            Padding="5"
+                            Command="{Binding showAddContactViewCommand}">
                     <Button.Content>
-                        <Image Height="20" Width="20" Source="/Assets/Icons/user-plus-solid.png"/>
+                        <Image Source="/Assets/Icons/user-plus-solid.png"/>
+                    </Button.Content>
+                </Button>
+                <Button Cursor="Hand"
+                            Background="{StaticResource ThemeDark}"
+                            BorderThickness="0"
+                            Padding="5"
+                            Command="{Binding showAddContactViewCommand}">
+                    <Button.Content>
+                        <Image Source="/Assets/Icons/user-pen-solid.png"/>
+                    </Button.Content>
+                </Button>
+                <Button Cursor="Hand"
+                            Background="{StaticResource ThemeDark}"
+                            BorderThickness="0"
+                            Padding="5"
+                            Command="{Binding showAddContactViewCommand}">
+                    <Button.Content>
+                        <Image Source="/Assets/Icons/user-xmark-solid.png"/>
                     </Button.Content>
                 </Button>
             </StackPanel>
@@ -67,6 +106,9 @@
             <ContentControl.Resources>
                 <DataTemplate DataType="{x:Type viewmodels:BookViewModel}">
                     <views:BookView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:AddContactViewModel}">
+                    <views:AddContactView />
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>

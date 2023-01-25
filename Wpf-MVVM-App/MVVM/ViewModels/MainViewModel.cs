@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wpf_MVVM_App.Services;
 
 namespace Wpf_MVVM_App.MVVM.ViewModels
 {
@@ -14,6 +15,18 @@ namespace Wpf_MVVM_App.MVVM.ViewModels
         private ObservableObject currentViewModel;
 
 
+        [RelayCommand]
+        private void showAddContactView()
+        {
+            CurrentViewModel= new AddContactViewModel();
+        }
+
+        [RelayCommand]
+        private void showBookView()
+        {
+            CurrentViewModel = new BookViewModel();
+        }
+
         /// <summary>
         /// MVVM Main Contstructor
         /// </summary>
@@ -21,5 +34,6 @@ namespace Wpf_MVVM_App.MVVM.ViewModels
         {
             CurrentViewModel = new BookViewModel();
         }
+
     }
 }

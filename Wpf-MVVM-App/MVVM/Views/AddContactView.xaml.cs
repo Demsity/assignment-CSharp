@@ -12,19 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf_MVVM_App.MVVM.ViewModels;
 using Wpf_MVVM_App.Services;
 
-namespace Wpf_MVVM_App
+namespace Wpf_MVVM_App.MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for AddContactView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddContactView : UserControl
     {
-        public MainWindow()
+        public AddContactView()
         {
             InitializeComponent();
         }
-
     }
 }

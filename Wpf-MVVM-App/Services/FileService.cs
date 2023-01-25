@@ -21,7 +21,7 @@ namespace Wpf_MVVM_App.Services
         }
 
 
-        public void storeContent(object content)
+        public void storeContent(Contact content)
         {
 
             try
