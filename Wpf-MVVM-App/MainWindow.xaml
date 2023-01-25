@@ -12,15 +12,15 @@
         Height="400" 
         Width="600"
         ResizeMode="CanResizeWithGrip"
-        Foreground="#E0E1DD">
+        Foreground="{StaticResource ThemeLight}">
 
-    <Grid Background="#1B263B">
+    <Grid Background="{StaticResource ThemeDark}">
         <Grid.RowDefinitions>
             <RowDefinition Height="60" />
             <RowDefinition />
         </Grid.RowDefinitions>
         <!-- Toolbar -->
-        <Grid Background="#0D1B2A">
+        <Grid Background="{StaticResource ThemeDark}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
                 <ColumnDefinition />
@@ -46,13 +46,20 @@
                 <TextBlock Margin="5 0 5 0" Text="|_|" />
                 <TextBlock Margin="5 0 5 0" Text="X" />
             </StackPanel>
-            <StackPanel Grid.Row="2"
+            <StackPanel Grid.Row="1"
                         Grid.Column="3"
                         Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center">
-                <TextBlock Text="New" Margin="5 0 5 0" />
-                <TextBlock Text="Edit" Margin="5 0 5 0" />
+                        HorizontalAlignment="right"
+                        VerticalAlignment="Center"
+                        Margin="0 0 10 0">
+                <Button Cursor="Hand"
+                            Background="{StaticResource ThemeDark}"
+                            BorderThickness="0"
+                            Padding="5">
+                    <Button.Content>
+                        <Image Height="20" Width="20" Source="/Assets/Icons/user-plus-solid.png"/>
+                    </Button.Content>
+                </Button>
             </StackPanel>
         </Grid>
         <ContentControl Grid.Row="1"

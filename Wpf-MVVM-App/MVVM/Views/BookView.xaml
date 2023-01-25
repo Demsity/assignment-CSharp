@@ -7,29 +7,105 @@
              xmlns:viewmodels="clr-namespace:Wpf_MVVM_App.MVVM.ViewModels"
              d:DataContext="{d:DesignInstance Type=viewmodels:BookViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="600">
-    <Grid>
+             d:DesignHeight="400" d:DesignWidth="600"
+             Foreground="#E0E1DD">
+    <Grid Margin="5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
         <ListView ItemsSource="{Binding ContactsList}"
-                  SelectedItem="{Binding SelectedContact}">
+                  SelectedItem="{Binding SelectedContact}"
+                  Background="Transparent"
+                  Foreground="#E0E1DD"
+                  BorderThickness="0 0 2 0"
+                  Padding="10">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="IMG" Margin="0 0 5 0" />
+                    <StackPanel Orientation="Horizontal"
+                                Margin="5 5 5 10">
+                        <Image Margin="0 0 5 0"
+                               Width="20"
+                               Height="20" Source="/Assets/Icons/user-solid.png"/>
                         <TextBlock Text="{Binding FullName}" />
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <Grid Grid.Column="2"
-              DataContext="{Binding SelectedContact}">
-            <TextBlock Text="{Binding FirstName}" />
-            <TextBlock Text="{Binding LastName}" />
-
+              DataContext="{Binding SelectedContact}"
+              Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition  />
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Top"
+                            Grid.Column="0"
+                            Margin="0 10 0 10">
+                    <TextBlock Margin="0 0 5 0" Text="{Binding FirstName}" FontSize="20" />
+                    <TextBlock Text="{Binding LastName}" FontSize="20" />
+                </StackPanel>
+                <Image Grid.Row="1"
+                       Stretch="Uniform"
+                       Source="/Assets/Icons/user-solid.png"/>
+                <StackPanel Grid.Column="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="center"
+                            Grid.RowSpan="2">
+                    <Button Cursor="Hand"
+                            Background="{StaticResource ThemeDark}"
+                            BorderThickness="0"
+                            Padding="5">
+                        <Button.Content>
+                            <Image Height="40" Width="40" Source="/Assets/Icons/user-pen-solid.png"/>
+                        </Button.Content>
+                    </Button>
+                    <Button Cursor="Hand"
+                            Background="{StaticResource ThemeDark}"
+                            BorderThickness="0"
+                            Padding="5">
+                        <Button.Content>
+                            <Image Height="40" Width="40" Source="/Assets/Icons/user-xmark-solid.png"/>
+                        </Button.Content>
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1"
+                  Margin="0 20 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0">
+                    <TextBlock Text="Adress:"
+                               FontSize="20"
+                               Margin="0 0 0 15"/>
+                    <TextBlock Text="{Binding StreetName}" FontSize="18" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0 0 5 0" Text="{Binding City}" FontSize="18" />
+                        <TextBlock Text="{Binding PostalCode}" FontSize="18" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Kontaktinformation:"
+                               FontSize="20"
+                               Margin="0 0 0 15"/>
+                    <TextBlock Text="{Binding PhoneNumber}" FontSize="18" />
+                    <TextBlock Text="{Binding Email}" FontSize="18" />
+                </StackPanel>
+            </Grid>
         </Grid>
     </Grid>
 </UserControl>

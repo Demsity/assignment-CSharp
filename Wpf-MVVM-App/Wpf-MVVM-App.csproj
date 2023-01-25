@@ -9,6 +9,32 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Icons\saveIcon.png" />
+    <None Remove="Assets\Icons\user-pen-solid.png" />
+    <None Remove="Assets\Icons\user-plus-solid.png" />
+    <None Remove="Assets\Icons\user-solid.png" />
+    <None Remove="Assets\Icons\user-xmark-solid.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Icons\saveIcon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\user-pen-solid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\user-plus-solid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\user-solid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\user-xmark-solid.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
   </ItemGroup>
