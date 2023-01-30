@@ -22,7 +22,7 @@ public partial class AddContactViewModel : ObservableObject
 	}
 
 	[RelayCommand]
-	private void saveNewContact()
+	private void SaveNewContact()
 	{
 
 		ContactService.AddContactToList(NewContact);
@@ -33,7 +33,7 @@ public partial class AddContactViewModel : ObservableObject
 	}
 
 	[RelayCommand]
-	private void cancelAddContact()
+	private void CancelAddContact()
 	{
         // Clear the Form
         NewContact = new Contact();

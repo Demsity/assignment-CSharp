@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Wpf_MVVM_App.MVVM.Models;
 using Wpf_MVVM_App.Services;
 
 namespace Wpf_MVVM_App.MVVM.ViewModels
@@ -14,17 +15,32 @@ namespace Wpf_MVVM_App.MVVM.ViewModels
         [ObservableProperty]
         private ObservableObject currentViewModel;
 
+        [ObservableProperty]
+        private Contact selectedContact;
 
         [RelayCommand]
-        private void showAddContactView()
+        private void ShowAddContactView()
         {
             CurrentViewModel= new AddContactViewModel();
         }
 
         [RelayCommand]
-        private void showBookView()
+        private void ShowBookView()
         {
             CurrentViewModel = new BookViewModel();
+        }
+
+        [RelayCommand]
+        private void ShowEditContactView()
+        {
+            CurrentViewModel = new EditContactViewModel();
+        }
+
+        [RelayCommand]
+        private void RemoveContact()
+        {
+            SelectedContact = ContactService.SelectedContact;
+            ContactService.RemoveContactFromList(SelectedContact);
         }
 
         /// <summary>

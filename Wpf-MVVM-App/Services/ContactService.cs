@@ -9,7 +9,7 @@ using Wpf_MVVM_App.MVVM.Models;
 
 namespace Wpf_MVVM_App.Services;
 
-public static partial class ContactService 
+public static partial class ContactService
 {
     private static FileService fileService = new FileService();
 
@@ -27,6 +27,7 @@ public static partial class ContactService
         try
         {
             ContactList = fileService.readContent();
+
         } catch
         {
             ContactList = new ObservableCollection<Contact>();
@@ -56,6 +57,19 @@ public static partial class ContactService
             
             fileService.storeContent(ContactList);
             PopulateContactList();
+        }
+    }
+
+    public static void UpdateContactInList (Contact contact)
+    {
+        if(contact != null) 
+        {
+            Contact _contact = ContactList.FirstOrDefault(x => x.Id == contact.Id)!;
+            if(_contact != null)
+            {
+                RemoveContactFromList(contact);
+                AddContactToList(_contact);
+            }
         }
     }
 

@@ -12,32 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Wpf_MVVM_App.MVVM.Models;
-using Wpf_MVVM_App.MVVM.ViewModels;
-using Wpf_MVVM_App.Services;
 
 namespace Wpf_MVVM_App.MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for BookView.xaml
+    /// Interaction logic for EditContactView.xaml
     /// </summary>
-    public partial class BookView : UserControl
+    public partial class EditContactView : UserControl
     {
-        
-
-        public BookView()
+        public EditContactView()
         {
             InitializeComponent();
-            
-        }
-
-
-        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            var item = (StackPanel)sender;
-            Contact contact = (Contact)item.DataContext;
-            ContactService.SelectedContact = contact;
         }
     }
 }
-

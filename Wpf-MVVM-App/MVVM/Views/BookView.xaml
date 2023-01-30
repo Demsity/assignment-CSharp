@@ -17,18 +17,27 @@
 
         <ListView ItemsSource="{Binding ContactsList}"
                   SelectedItem="{Binding SelectedContact}"
+                  SelectionMode="Single"
                   Background="Transparent"
                   Foreground="#E0E1DD"
-                  BorderThickness="0 0 2 0"
-                  Padding="10">
+                  BorderThickness="0 0 2 0">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal"
-                                Margin="5 5 5 10">
+                                Margin="5 5 5 10"
+                                Background="Transparent"
+                                Width="200"
+                                Height="60"
+                                MouseDown="StackPanel_MouseDown">
                         <Image Margin="0 0 5 0"
                                Width="20"
-                               Height="20" Source="/Assets/Icons/user-solid.png"/>
-                        <TextBlock Text="{Binding FullName}" />
+                               Height="20" 
+                               Source="/Assets/Icons/user-solid.png"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding FullName}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

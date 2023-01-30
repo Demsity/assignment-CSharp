@@ -9,10 +9,10 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="Adressboken" 
-        Height="500" 
-        Width="700"
-        MinHeight="500"
-        MinWidth="700"
+        Height="600" 
+        Width="800"
+        MinHeight="600"
+        MinWidth="800"
         ResizeMode="CanResizeWithGrip"
         Foreground="{StaticResource ThemeLight}">
 
@@ -47,7 +47,7 @@
                             Background="{StaticResource ThemeDark}"
                             BorderThickness="0"
                             Padding="5"
-                            Command="{Binding showBookViewCommand}"
+                            Command="{Binding ShowBookViewCommand}"
                             Width="30"
                             Height="30">
                     <Button.Content>
@@ -68,7 +68,7 @@
                             Background="{StaticResource ThemeDark}"
                             BorderThickness="0"
                             Padding="5"
-                            Command="{Binding showAddContactViewCommand}">
+                            Command="{Binding ShowAddContactViewCommand}">
                     <Button.Content>
                         <Image Source="/Assets/Icons/user-plus-solid.png"/>
                     </Button.Content>
@@ -77,16 +77,17 @@
                             Background="{StaticResource ThemeDark}"
                             BorderThickness="0"
                             Padding="5"
-                            Command="{Binding showAddContactViewCommand}">
+                            Command="{Binding ShowEditContactViewCommand}">
                     <Button.Content>
                         <Image Source="/Assets/Icons/user-pen-solid.png"/>
                     </Button.Content>
                 </Button>
                 <Button Cursor="Hand"
-                            Background="{StaticResource ThemeDark}"
-                            BorderThickness="0"
-                            Padding="5"
-                            Command="{Binding showAddContactViewCommand}">
+                        x:Name="btn_delete"
+                        Background="{StaticResource ThemeDark}"
+                        BorderThickness="0"
+                        Padding="5"
+                        PreviewMouseLeftButtonDown="btn_delete_PreviewMouseLeftButtonDown">
                     <Button.Content>
                         <Image Source="/Assets/Icons/user-xmark-solid.png"/>
                     </Button.Content>
@@ -101,6 +102,9 @@
                 </DataTemplate>
                 <DataTemplate DataType="{x:Type viewmodels:AddContactViewModel}">
                     <views:AddContactView />
+                </DataTemplate>
+                <DataTemplate DataType="{x:Type viewmodels:EditContactViewModel}">
+                    <views:EditContactView />
                 </DataTemplate>
             </ContentControl.Resources>
         </ContentControl>

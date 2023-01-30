@@ -19,16 +19,18 @@ namespace Wpf_MVVM_App.MVVM.ViewModels
         private ObservableCollection<Contact> contactsList;
 
         [ObservableProperty]
-        private Contact selectedContact;
+        private Contact selectedContact = ContactService.SelectedContact;
 
 
         public BookViewModel()
         {
             ContactsList = ContactService.ContactList;
 
+
             if (ContactsList != null)
             {
                 SelectedContact = ContactsList.FirstOrDefault()!;
+                ContactService.SelectedContact = SelectedContact;
             }
         }
     }

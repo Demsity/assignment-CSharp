@@ -1,16 +1,17 @@
-﻿<UserControl x:Class="Wpf_MVVM_App.MVVM.Views.AddContactView"
+﻿<UserControl x:Class="Wpf_MVVM_App.MVVM.Views.EditContactView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Wpf_MVVM_App.MVVM.Views"
              xmlns:viewmodel="clr-namespace:Wpf_MVVM_App.MVVM.ViewModels"
-             d:DataContext="{d:DesignInstance Type=viewmodel:AddContactViewModel}"
+             d:DataContext="{d:DesignInstance Type=viewmodel:EditContactViewModel}"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="550" d:DesignWidth="800"
              Foreground="{StaticResource ThemeLight}">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
@@ -18,43 +19,44 @@
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <Image Grid.Row="0"
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Margin="5" Text="Ändra Kontakt" FontSize="20" HorizontalAlignment="center"  />
+        <Image Grid.Row="1"
                Grid.ColumnSpan="2" Source="/Assets/Icons/user-solid.png"
                Margin="0 5 0 0"/>
-        <StackPanel Grid.Row="1"
+        <StackPanel Grid.Row="2"
                     Grid.Column="0"
                     Margin="10">
             <StackPanel>
                 <TextBlock Text="Förnamn:" FontSize="18" />
-                <TextBox Text="{Binding NewContact.FirstName, Mode=TwoWay}" FontSize="18" />
+                <TextBox Text="{Binding OldContact.FirstName, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Efternamn:" FontSize="18" />
-                <TextBox Text="{Binding NewContact.LastName, Mode=TwoWay}" FontSize="18" />
+                <TextBox Text="{Binding OldContact.LastName, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Epostadress: " FontSize="18" />
-                <TextBox Text="{Binding NewContact.Email, Mode=TwoWay}" FontSize="18" />
+                <TextBox Text="{Binding OldContact.Email, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Telefonnummer: " FontSize="18" />
-                <TextBox Text="{Binding NewContact.PhoneNumber, Mode=TwoWay}" FontSize="18" />
+                <TextBox Text="{Binding OldContact.PhoneNumber, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
         </StackPanel>
-        <StackPanel Grid.Row="1"
+        <StackPanel Grid.Row="2"
                     Grid.Column="1"
                     Margin="10">
             <StackPanel>
                 <TextBlock Text="Gatunamn: " FontSize="18" />
-                <TextBox Text="{Binding NewContact.StreetName, Mode=TwoWay}" FontSize="18" />
+                <TextBox Text="{Binding OldContact.StreetName, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Stad: " FontSize="18" />
-                <TextBox Text="{Binding NewContact.City, Mode=TwoWay}" FontSize="18" />
+                <TextBox Text="{Binding OldContact.City, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Postnummer: " FontSize="18" />
-                <TextBox Text="{Binding NewContact.PostalCode, Mode=TwoWay}" FontSize="18" />
+                <TextBox Text="{Binding OldContact.PostalCode, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
@@ -63,7 +65,7 @@
                     Height="30"
                     Background="{StaticResource ThemeDark}"
                     BorderThickness="0"
-                    Command="{Binding SaveNewContactCommand}"
+                    Command="{Binding SaveContactCommand}"
                         Margin="0 20 10 0">
                     <Button.Content>
                         <Image Height="30" Width="30" Source="/Assets/Icons/saveIcon.png" />
@@ -73,7 +75,7 @@
                     Height="30"
                     Background="{StaticResource ThemeDark}"
                     BorderThickness="0"
-                    Command="{Binding CancelAddContactCommand}"
+                    Command="{Binding CancelEditContactCommand}"
                         Margin="10 20 0 0">
                     <Button.Content>
                         <Image Source="/Assets/Icons/xmark-solid.png" />
