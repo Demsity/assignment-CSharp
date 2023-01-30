@@ -12,31 +12,24 @@ namespace Wpf_MVVM_App.MVVM.ViewModels;
 
 public partial class AddContactViewModel : ObservableObject
 {
-    private readonly FileService fileService;
 
 	[ObservableProperty]
 	private Contact newContact;
 
+	public AddContactViewModel()
+	{
+		newContact= new Contact();
+	}
+
 	[RelayCommand]
 	private void saveNewContact()
 	{
-		NewContact.FirstName = "";
-		NewContact.LastName = "";
-		NewContact.Email = "";
-		NewContact.PhoneNumber = "";
-        NewContact.StreetName = "";
-		NewContact.City = "";
-		NewContact.PostalCode = "";
 
-        if (true)
-		{
-			fileService.storeContent(NewContact);
-		}
-	}
+		ContactService.AddContactToList(NewContact);
 
-	public AddContactViewModel()
-	{
-		fileService= new FileService();
+		// Clear the Form
+		NewContact = new Contact();
+
 	}
 
 }

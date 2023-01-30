@@ -15,8 +15,6 @@ namespace Wpf_MVVM_App.MVVM.ViewModels
 {
     public partial class BookViewModel : ObservableObject
     {
-        private FileService fileService;
-
         [ObservableProperty]
         private ObservableCollection<Contact> contactsList;
 
@@ -26,12 +24,11 @@ namespace Wpf_MVVM_App.MVVM.ViewModels
 
         public BookViewModel()
         {
-            fileService = new FileService();
-            ContactsList = fileService.ContactsList;
+            ContactsList = ContactService.ContactList;
 
-            if (ContactsList.FirstOrDefault<Contact>() != null)
+            if (ContactsList != null)
             {
-                SelectedContact = (Contact)ContactsList.FirstOrDefault<Contact>();
+                SelectedContact = ContactsList.FirstOrDefault()!;
             }
         }
     }

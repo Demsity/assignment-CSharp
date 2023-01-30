@@ -9,8 +9,10 @@
         d:DataContext="{d:DesignInstance Type=viewmodels:MainViewModel}"
         mc:Ignorable="d"
         Title="Adressboken" 
-        Height="400" 
-        Width="600"
+        Height="500" 
+        Width="700"
+        MinHeight="500"
+        MinWidth="700"
         ResizeMode="CanResizeWithGrip"
         Foreground="{StaticResource ThemeLight}">
 

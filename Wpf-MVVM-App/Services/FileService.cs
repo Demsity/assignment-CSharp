@@ -13,21 +13,14 @@ namespace Wpf_MVVM_App.Services
     class FileService
     {
         private readonly string filePath = @$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\content.json";
-        public ObservableCollection<Contact> ContactsList;
 
-        public FileService()
-        {
-            ContactsList = readContent();
-        }
-
-
-        public void storeContent(Contact content)
+        public void storeContent(ObservableCollection<Contact> contactList)
         {
 
             try
             {
                 using var sw = new StreamWriter(filePath);
-                sw.WriteLine(content);
+                sw.WriteLine(JsonConvert.SerializeObject(contactList));
             }
             catch
             {

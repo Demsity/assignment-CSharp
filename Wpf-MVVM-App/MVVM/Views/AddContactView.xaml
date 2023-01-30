@@ -14,31 +14,31 @@
         <StackPanel>
             <StackPanel>
                 <TextBlock Text="Förnamn:" FontSize="18" />
-                <TextBox Text="{Binding NewContact.FirstName}" FontSize="18" />
+                <TextBox Text="{Binding NewContact.FirstName, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Efternamn:" FontSize="18" />
-                <TextBox Text="{Binding NewContact.FirstName}" FontSize="18" />
+                <TextBox Text="{Binding NewContact.LastName, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Epostadress: " FontSize="18" />
-                <TextBox Text="{Binding NewContact.Email}" FontSize="18" />
+                <TextBox Text="{Binding NewContact.Email, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Telefonnummer: " FontSize="18" />
-                <TextBox Text="{Binding NewContact.PhoneNumber}" FontSize="18" />
+                <TextBox Text="{Binding NewContact.PhoneNumber, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Gatunamn: " FontSize="18" />
-                <TextBox Text="{Binding NewContact.StreetName}" FontSize="18" />
+                <TextBox Text="{Binding NewContact.StreetName, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Stad: " FontSize="18" />
-                <TextBox Text="{Binding NewContact.City}" FontSize="18" />
+                <TextBox Text="{Binding NewContact.City, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel>
                 <TextBlock Text="Postnummer: " FontSize="18" />
-                <TextBox Text="{Binding NewContact.PostalCode}" FontSize="18" />
+                <TextBox Text="{Binding NewContact.PostalCode, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
             <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
@@ -46,7 +46,8 @@
                 <Button Width="30" 
                     Height="30"
                     Background="{StaticResource ThemeDark}"
-                    BorderThickness="0">
+                    BorderThickness="0"
+                    Command="{Binding saveNewContactCommand}">
                     <Button.Content>
                         <Image Height="30" Width="30" Source="/Assets/Icons/saveIcon.png" />
                     </Button.Content>
