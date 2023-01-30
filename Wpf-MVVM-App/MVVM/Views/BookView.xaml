@@ -53,34 +53,15 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
                             Grid.Column="0"
-                            Margin="0 10 0 10">
+                            Margin="0 10 0 10"
+                            Grid.ColumnSpan="2">
                     <TextBlock Margin="0 0 5 0" Text="{Binding FirstName}" FontSize="20" />
                     <TextBlock Text="{Binding LastName}" FontSize="20" />
                 </StackPanel>
                 <Image Grid.Row="1"
+                       Grid.ColumnSpan="2"
                        Stretch="Uniform"
                        Source="/Assets/Icons/user-solid.png"/>
-                <StackPanel Grid.Column="2"
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="center"
-                            Grid.RowSpan="2">
-                    <Button Cursor="Hand"
-                            Background="{StaticResource ThemeDark}"
-                            BorderThickness="0"
-                            Padding="5">
-                        <Button.Content>
-                            <Image Height="40" Width="40" Source="/Assets/Icons/user-pen-solid.png"/>
-                        </Button.Content>
-                    </Button>
-                    <Button Cursor="Hand"
-                            Background="{StaticResource ThemeDark}"
-                            BorderThickness="0"
-                            Padding="5">
-                        <Button.Content>
-                            <Image Height="40" Width="40" Source="/Assets/Icons/user-xmark-solid.png"/>
-                        </Button.Content>
-                    </Button>
-                </StackPanel>
             </Grid>
             <Grid Grid.Row="1"
                   Margin="0 20 0 0">

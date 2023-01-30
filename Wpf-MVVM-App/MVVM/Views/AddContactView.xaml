@@ -11,7 +11,20 @@
              d:DesignHeight="450" d:DesignWidth="800"
              Foreground="{StaticResource ThemeLight}">
     <Grid>
-        <StackPanel>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Image Grid.Row="0"
+               Grid.ColumnSpan="2" Source="/Assets/Icons/user-solid.png"
+               Margin="0 5 0 0"/>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10">
             <StackPanel>
                 <TextBlock Text="Förnamn:" FontSize="18" />
                 <TextBox Text="{Binding NewContact.FirstName, Mode=TwoWay}" FontSize="18" />
@@ -28,6 +41,10 @@
                 <TextBlock Text="Telefonnummer: " FontSize="18" />
                 <TextBox Text="{Binding NewContact.PhoneNumber, Mode=TwoWay}" FontSize="18" />
             </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="10">
             <StackPanel>
                 <TextBlock Text="Gatunamn: " FontSize="18" />
                 <TextBox Text="{Binding NewContact.StreetName, Mode=TwoWay}" FontSize="18" />
@@ -47,9 +64,20 @@
                     Height="30"
                     Background="{StaticResource ThemeDark}"
                     BorderThickness="0"
-                    Command="{Binding saveNewContactCommand}">
+                    Command="{Binding saveNewContactCommand}"
+                        Margin="0 20 10 0">
                     <Button.Content>
                         <Image Height="30" Width="30" Source="/Assets/Icons/saveIcon.png" />
+                    </Button.Content>
+                </Button>
+                <Button Width="30" 
+                    Height="30"
+                    Background="{StaticResource ThemeDark}"
+                    BorderThickness="0"
+                    Command="{Binding cancelAddContactCommand}"
+                        Margin="10 20 0 0">
+                    <Button.Content>
+                        <Image Source="/Assets/Icons/xmark-solid.png" />
                     </Button.Content>
                 </Button>
             </StackPanel>

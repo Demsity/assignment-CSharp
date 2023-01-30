@@ -38,16 +38,6 @@
                        FontSize="20"
                        VerticalAlignment="Center"
                        Margin="10 0 0 0"/>
-            <!-- Toolbar Controlls -->
-            <StackPanel Grid.Row="0"
-                        Grid.Column="3"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top">
-                <TextBlock Margin="5 0 5 0"  Text="_" />
-                <TextBlock Margin="5 0 5 0" Text="|_|" />
-                <TextBlock Margin="5 0 5 0" Text="X" />
-            </StackPanel>
             <StackPanel Grid.Row="1"
                         Grid.Column="0"
                         VerticalAlignment="Center"

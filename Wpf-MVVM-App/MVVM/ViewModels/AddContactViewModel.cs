@@ -32,4 +32,11 @@ public partial class AddContactViewModel : ObservableObject
 
 	}
 
+	[RelayCommand]
+	private void cancelAddContact()
+	{
+        // Clear the Form
+        NewContact = new Contact();
+    }
+
 }
