@@ -29,7 +29,7 @@ namespace Wpf_MVVM_App
 
         private void btn_delete_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var Result = MessageBox.Show($"Är du säker att du vill ta bort {ContactService.SelectedContact.FullName} från Adressboken? ", "Ta bort kontakt",   MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show($"Är du säker att du vill ta bort {ContactService.SelectedContact.FullName} från Adressboken?", "Ta bort kontakt",   MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (Result == MessageBoxResult.Yes)
             {

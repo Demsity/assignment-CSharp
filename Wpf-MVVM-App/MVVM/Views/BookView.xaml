@@ -11,7 +11,7 @@
              Foreground="#E0E1DD">
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="180" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
@@ -24,11 +24,12 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal"
-                                Margin="5 5 5 10"
                                 Background="Transparent"
-                                Width="200"
-                                Height="60"
-                                MouseDown="StackPanel_MouseDown">
+                                Width="165"
+                                Height="80"
+                                MouseDown="StackPanel_MouseDown"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center">
                         <Image Margin="0 0 5 0"
                                Width="20"
                                Height="20" 
