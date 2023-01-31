@@ -10,9 +10,19 @@ using Wpf_MVVM_App.MVVM.Models;
 
 namespace Wpf_MVVM_App.Services
 {
-    class FileService
+    public class FileService
     {
-        private readonly string filePath = @$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\content.json";
+        private string filePath;
+
+        public FileService()
+        {
+            filePath = @$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\content.json";
+        }
+
+        public FileService(string path)
+        {
+            filePath = path;
+        }
 
         public void storeContent(ObservableCollection<Contact> contactList)
         {

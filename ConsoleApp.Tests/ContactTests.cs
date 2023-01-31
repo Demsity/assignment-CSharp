@@ -7,7 +7,7 @@ namespace ConsoleApp.Tests
     {
         private ContactService contactService;
         private Contact testContact;
-        private string filePath = @$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\tests.json";
+        private string filePath = @$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\Console.json";
 
         public ContactTests()
         {
@@ -32,7 +32,7 @@ namespace ConsoleApp.Tests
         {
             contactService.AddContactToList(testContact, filePath);
             Assert.Single<Contact>(contactService.ContactList);
-
+            File.Delete(filePath);
         }
     }
 }
