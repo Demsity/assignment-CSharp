@@ -12,7 +12,7 @@ internal interface IContact : IAdress
 
 
 }
-internal class Contact : IContact, IAdress
+public class Contact : IContact, IAdress
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public string FirstName { get; set; } = null!;

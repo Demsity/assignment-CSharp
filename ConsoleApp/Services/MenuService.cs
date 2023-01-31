@@ -5,13 +5,13 @@ namespace ConsoleApp.Services;
 
 internal class MenuService
 {
+    private ContactService contactService = new ContactService();
     private List<Contact> contacts = new List<Contact>();
-    private FileService fileService = new();
 
     public string FilePath { get; set; } = null!;
     public void Run ()
     {
-        PopulateContactsList();
+        PopulateContactList();
         mainMenu();
     }
 
@@ -60,8 +60,8 @@ internal class MenuService
         Console.Write("Adress: ");
         contact.StreetName = Console.ReadLine() ?? null!;
 
-        contacts.Add(contact);
-        fileService.storeContent(JsonConvert.SerializeObject(contacts), FilePath);
+        contactService.AddContactToList(contact, FilePath);
+        PopulateContactList();
         Console.WriteLine("Kontakten är Skapad!");
         ReturnToMainMenu();
         
@@ -131,8 +131,8 @@ internal class MenuService
             switch(answer.ToLower()) {
                 case "y":
                     InsertLineBreak();
-                    contacts.Remove(contact);
-                    fileService.storeContent(JsonConvert.SerializeObject(contacts), FilePath);
+                    contactService.RemoveContactFromList(contact, FilePath);
+                    PopulateContactList();
                     Console.WriteLine("Kontakten har tagits bort!");
                     ReturnToMainMenu();
                     break;
@@ -154,15 +154,11 @@ internal class MenuService
 
 
 
-
-    private void PopulateContactsList ()
+    private void PopulateContactList()
     {
-
-        var itemsFromFile= JsonConvert.DeserializeObject<List<Contact>>(fileService.readContent(FilePath));
-        if (itemsFromFile != null) {
-            contacts = itemsFromFile;
-        }
+        contacts = contactService.PopulateContactsList(FilePath);
     }
+
 
     private void ClearScreen()
     {
