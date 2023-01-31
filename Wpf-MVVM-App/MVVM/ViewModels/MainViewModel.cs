@@ -13,10 +13,10 @@ namespace Wpf_MVVM_App.MVVM.ViewModels
     public partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableObject currentViewModel;
+        private ObservableObject currentViewModel = null!;
 
         [ObservableProperty]
-        private Contact selectedContact;
+        private Contact selectedContact = null!;
 
         [RelayCommand]
         private void ShowAddContactView()

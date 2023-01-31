@@ -16,7 +16,7 @@ namespace Wpf_MVVM_App.MVVM.ViewModels
     public partial class BookViewModel : ObservableObject
     {
         [ObservableProperty]
-        private ObservableCollection<Contact> contactsList;
+        private ObservableCollection<Contact> contactsList = null!;
 
         [ObservableProperty]
         private Contact selectedContact = ContactService.SelectedContact;
@@ -29,6 +29,7 @@ namespace Wpf_MVVM_App.MVVM.ViewModels
 
             if (ContactsList != null)
             {
+                // Make the First Contact From The List The Selected Contact
                 SelectedContact = ContactsList.FirstOrDefault()!;
                 ContactService.SelectedContact = SelectedContact;
             }

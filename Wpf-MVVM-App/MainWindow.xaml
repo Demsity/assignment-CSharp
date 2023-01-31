@@ -94,6 +94,7 @@
                 </Button>
             </StackPanel>
         </Grid>
+        <!-- Main Content View -->
         <ContentControl Grid.Row="1"
                         Content="{Binding CurrentViewModel}">
             <ContentControl.Resources>

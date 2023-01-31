@@ -14,7 +14,7 @@
             <ColumnDefinition Width="180" />
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
-
+        <!-- Contact List -->
         <ListView ItemsSource="{Binding ContactsList}"
                   SelectedItem="{Binding SelectedContact}"
                   SelectionMode="Single"
@@ -43,6 +43,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <!-- Detailed View -->
         <Grid Grid.Column="2"
               DataContext="{Binding SelectedContact}"
               Margin="10">
@@ -59,6 +60,7 @@
                     <RowDefinition Height="auto" />
                     <RowDefinition  />
                 </Grid.RowDefinitions>
+                <!-- Name and Image -->
                 <StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Center"
                             VerticalAlignment="Top"
@@ -73,6 +75,7 @@
                        Stretch="Uniform"
                        Source="/Assets/Icons/user-solid.png"/>
             </Grid>
+            <!-- Information -->
             <Grid Grid.Row="1"
                   Margin="0 20 0 0">
                 <Grid.ColumnDefinitions>

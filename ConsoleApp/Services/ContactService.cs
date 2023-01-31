@@ -23,6 +23,7 @@ public class ContactService
            return ContactList = itemsFromFile;
         } else
         {
+            // if File dosent exsist, create it
             fileService.storeContent(JsonConvert.SerializeObject(ContactList), filePath);
             return null!;
         }

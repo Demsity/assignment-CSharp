@@ -19,6 +19,7 @@ namespace Wpf_MVVM_App.Services
             filePath = @$"{Environment.GetFolderPath(Environment.SpecialFolder.Desktop)}\content.json";
         }
 
+        // Overload for Testing
         public FileService(string path)
         {
             filePath = path;

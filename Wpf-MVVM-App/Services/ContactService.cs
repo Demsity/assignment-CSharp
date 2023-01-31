@@ -13,8 +13,10 @@ public static partial class ContactService
 {
     private static FileService fileService = new FileService();
 
+    // A Static Global List Of Contacts
     public static ObservableCollection<Contact> ContactList;
 
+    // A Static Global Variable For Assigning The Selected Contact
     public static Contact SelectedContact = new Contact();
 
     static ContactService()
@@ -30,6 +32,7 @@ public static partial class ContactService
 
         } catch
         {
+            // Needed to create file if it dosen´t exsists
             ContactList = new ObservableCollection<Contact>();
         }
     }
@@ -38,23 +41,8 @@ public static partial class ContactService
     {
         if(contact != null)
         {
-            try
-            {
-                ContactList.Add(contact);
-            }
-            catch 
-            {
-                ContactList = new ObservableCollection<Contact>{ new Contact {
-                FirstName= contact.FirstName,
-                LastName= contact.LastName,
-                Email= contact.Email,
-                PhoneNumber= contact.PhoneNumber,
-                StreetName= contact.StreetName,
-                City= contact.City,
-                PostalCode= contact.PostalCode,
-                } };
-            }
-            
+
+            ContactList.Add(contact);
             fileService.storeContent(ContactList);
             PopulateContactList();
         }
@@ -67,6 +55,7 @@ public static partial class ContactService
             Contact _contact = ContactList.FirstOrDefault(x => x.Id == contact.Id)!;
             if(_contact != null)
             {
+                // Remove the old contact and add the updated one
                 RemoveContactFromList(contact);
                 AddContactToList(_contact);
             }

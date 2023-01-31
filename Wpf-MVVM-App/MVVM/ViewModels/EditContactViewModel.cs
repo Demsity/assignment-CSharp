@@ -33,6 +33,6 @@ public partial class EditContactViewModel : ObservableObject
 
 	public EditContactViewModel()
 	{
-		oldContact = (Contact)ContactService.SelectedContact;
+		oldContact = ContactService.SelectedContact;
 	}
 }
