@@ -91,7 +91,7 @@ internal class MenuService
         ClearScreen();
         Console.WriteLine("3. Visa en specifik kontakt:");
         Console.Write("Sök efter en kontakt med namn (Skiftkänslig): ");
-        var query = Console.ReadLine();
+        var query = Console.ReadLine() ?? null!;
         InsertLineBreak();
 
         var contact = SearchForContact(query);
@@ -113,7 +113,7 @@ internal class MenuService
         ClearScreen();
         Console.WriteLine("4. Ta bort en specifik kontakt");
         Console.Write("Sök efter en kontakt med namn (Skiftkänslig): ");
-        var query = Console.ReadLine();
+        var query = Console.ReadLine() ?? null!;
         InsertLineBreak();
 
         var contact = SearchForContact(query);
@@ -126,7 +126,7 @@ internal class MenuService
             Console.WriteLine($"Adress: {contact.FullAdress}");
             InsertLineBreak();
             Console.Write("Vill du ta bort kontakten? ( y/n ): ");
-            var answer = Console.ReadLine();
+            var answer = Console.ReadLine() ?? null!;
             
             switch(answer.ToLower()) {
                 case "y":

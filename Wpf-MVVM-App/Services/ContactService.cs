@@ -14,7 +14,7 @@ public static partial class ContactService
     private static FileService fileService = new FileService();
 
     // A Static Global List Of Contacts
-    public static ObservableCollection<Contact> ContactList;
+    public static ObservableCollection<Contact> ContactList = null!;
 
     // A Static Global Variable For Assigning The Selected Contact
     public static Contact SelectedContact = new Contact();
